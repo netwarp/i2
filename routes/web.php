@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace' => 'Front', 'as' => '.front'], function() {
+
+    Route::get('/', ['as' => 'getIndex', 'uses' => 'FrontController@getIndex']);
+
+    Route::get('/acheter', ['as' => 'getBuy', 'uses' => 'FrontController@getBuy']);
+
+    Route::get('/fiche', ['as' => 'getCard', 'uses' => 'FrontController@getCard']);
+
+    Route::get('/vendre', ['as' => 'getSell', 'uses' => 'FrontController@getSell']);
 });
