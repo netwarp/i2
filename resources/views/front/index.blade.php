@@ -7,17 +7,20 @@
 
 @section('content')
     <div id="background-form">
-        <form action="#">
+        <form action="#" method="POST">
             <div class="box">
-                <div class="field is-horizontal">
-                    <input class="input" placeholder="Name" type="text">
-                    <input class="input" placeholder="Name" type="text">
-                    <input class="input" placeholder="Name" type="text">
+                <div class="field is-horizontal has-addons">
+                    <input class="input is-medium" placeholder="Name" type="text">
+                    <input class="input is-medium" placeholder="Name" type="text">
+                    <input class="input is-medium" placeholder="Name" type="text">
+
+                    <button class="button is-medium is-dark" type="submit"><i class="fa fa-search"></i> Chercher</button>
                 </div>
             </div>
         </form>
     </div>
 
+    <h2 class="is-size-1 has-text-centered">Les nouveautés</h2>
     <div class="owl-carousel owl-theme" id="carousel-index">
         @for($i = 0; $i < 4; $i++)
         <div class="item">
@@ -27,6 +30,12 @@
             <h4>{{ $i }}</h4>
         </div>
         @endfor
+    </div>
+
+    <div class="has-background-black-ter" id="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
     </div>
 @endsection
 

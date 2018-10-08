@@ -11651,6 +11651,19 @@ body {
           align-items: center;
 }
 
+#background-form .input,
+#background-form .button {
+  border-radius: 0;
+}
+
+#background-form .fa {
+  margin-right: 1rem;
+}
+
+#background-form + .is-size-1 {
+  margin-top: 2rem;
+}
+
 #carousel-index {
   margin: 1rem 0;
 }
@@ -11659,15 +11672,53 @@ body {
   text-align: center;
 }
 
+#social-icons {
+  padding: 1rem;
+  text-align: center;
+}
+
+#social-icons a {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0 .4rem;
+}
+
 /**
 * BUY PAGE
 *
 */
 
 .card-margin {
-  margin: 2rem 0;
+  margin: 1rem 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.card-margin .picture {
+  width: 50%;
+}
+
+.card-margin .picture img {
+  width: 100%;
+}
+
+.card-margin .card-content h2 {
+  font-size: 2rem;
+}
+
+.card-margin .card-content p {
+  font-size: 1rem;
+}
+
+.card-margin .card-content .data {
+  margin-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 

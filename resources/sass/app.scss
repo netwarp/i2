@@ -97,6 +97,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    .input, .button {
+        border-radius: 0;
+    }
+
+    .fa {
+        margin-right: 1rem;
+    }
+
+    // cible le titre juste en dessous du l'éspace formulaire
+    & + .is-size-1 {
+        margin-top: 2rem;
+    }
 }
 
 #carousel-index {
@@ -107,12 +120,50 @@ body {
     }
 }
 
+#social-icons {
+    padding: 1rem;
+    text-align: center;
+
+    a {
+        font-size: 2rem;
+        color: #fff;
+        margin: 0 .4rem;
+    }
+}
+
 /**
 * BUY PAGE
 *
 */
 
 .card-margin {
-    margin: 2rem 0;
+    margin: 1rem 0;
     display: flex;
+
+    .picture {
+        width: 50%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .card-content {
+        
+        h2 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        .data {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-around;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    }
 }
