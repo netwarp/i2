@@ -10,18 +10,19 @@
                         <option value="date">Par date</option>
                         <option value="price">Par prix</option>
                         <option value="surface">Par m²</option>
-                        <option value="room">Par pièces</option>
+                        <option value="rooms">Par pièces</option>
                     </select>
                 </div>
             <div id="cards">
                 
                 @for($i = 0; $i < 4; $i++)
                     @php 
+                        $date = rand(10000, 1000000);
                         $surface = rand(50, 200);
                         $rooms = rand(1, 9);
                         $price = rand(50000, 100000);
                     @endphp
-                    <div class="card card-margin" data-surface="{{ $surface }}" data-rooms="{{ $rooms }}" data-price="{{ $price }}">
+                    <div class="card card-margin" data-surface="{{ $surface }}" data-rooms="{{ $rooms }}" data-price="{{ $price }}" data-date="{{ $date }}">
                         <a href="/fiche" class="picture">
                             <img src="/img/carousel-ipsum.jpeg" alt="card">
                         </a>
@@ -29,7 +30,7 @@
                         <div class="card-content">
                             <h2>
                                 <a href="{{ action('Front\FrontController@getCard') }}">
-                                    Lorem, ipsum dolor sit amet consectetur a {{ $i }}
+                                   {{ $i }} Lorem, ipsum dolor sit amet consectetur a 
                                 </a>
                             </h2>
                             
@@ -38,13 +39,13 @@
                             </p>
 
                             <div class="data">
-                                <div>
+                                <div class="surface">
                                     {{ $surface }} m²
                                 </div>
-                                <div>
+                                <div class="rooms">
                                     {{ $rooms }} pièces
                                 </div>
-                                <div>
+                                <div class="price">
                                     {{ $price }} €
                                 </div>
                             </div>
@@ -64,12 +65,12 @@
 
     document.querySelectorAll('.card-margin').forEach((card) => {
         var obj = {
-            title: card.querySelector('h2 a').innerHTML.trim(),
-            img: card.querySelector('img').src,
-            p: card.querySelector('p').innerHTML.trim(),
             surface: parseInt(card.dataset.surface),
             price: parseInt(card.dataset.price),
-            rooms: parseInt(card.dataset.rooms) 
+            rooms: parseInt(card.dataset.rooms),
+            date: parseInt(card.dataset.date),
+
+            html: card.outerHTML
         }
         
         cards.push(obj)
@@ -77,12 +78,10 @@
 
     console.log(cards)
 
-    var structure_card = document.querySelector('.card-margin')
-    console.log(structure_card)
-
     document.querySelector('#select').addEventListener('change', (event) => {
 
         let criteria = event.target.value
+        console.log(criteria)
 
         cards = cards.sort((a, b) => {
             if (a[criteria] > b[criteria]) 
@@ -93,25 +92,13 @@
                 return 0
         })
 
-      //  console.log(cards)
-        var cards_dom = document.querySelector('#cards')
+        var new_dom = ''
 
         for (card of cards) {
-            structure_card.querySelector('h2 a').innerHTML = card.title
-          
-            structure_card.querySelector('img').src = card.img
-           // structure_card.querySelector('p') = card.p 
-
-            
-            structure_card.dataset.surface = card.surface 
-            structure_card.dataset.price = card.price 
-            structure_card.dataset.rooms = cards.room
-            
-            console.log(structure_card)
-           
-            
+            new_dom += card.html
         }
-   
+
+        document.querySelector('#cards').innerHTML = new_dom
     })
 </script>
 @endpush

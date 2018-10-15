@@ -22,14 +22,14 @@
 
     <h2 class="is-size-1 has-text-centered">Les nouveautés</h2>
     <div class="owl-carousel owl-theme" id="carousel-index">
-        @for($i = 0; $i < 4; $i++)
+        @foreach($cards as $card)
         <div class="item">
             <div>
-                <a href="#"><img src="/img/carousel-ipsum.jpeg" alt=""></a>
+                <a href="{{ action('Front\FrontController@getCard', $card->id) }}"><img src="/images/{{ $card->getFirstImage() }}" alt=""></a>
             </div>
-            <h4>{{ $i }}</h4>
+            <h4>{{ $card->data['title'] }}</h4>
         </div>
-        @endfor
+        @endforeach
     </div>
 
     <div class="has-background-black-ter" id="social-icons">
