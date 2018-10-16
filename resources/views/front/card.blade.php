@@ -27,7 +27,7 @@
                     <div class="column has-text-left">
 
                         <h1 class="is-size-3 has-text-centered">{{ $card->data['title'] ?? '' }}</h1>
-                        <a href="#" class="button is-medium is-link is-fullwidth">Contactez nous</a>
+                        <a href="{{ action('Front\FrontController@getSell') }}" class="button is-medium is-link is-fullwidth">Contactez nous</a>
                         <hr>
                         <p>
                             {{ $card->data['description'] ?? '' }}

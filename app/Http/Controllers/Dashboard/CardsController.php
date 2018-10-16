@@ -143,7 +143,7 @@ class CardsController extends Controller
             'price' => $request->get('price'),
             'description' => $request->get('description'),
             'folder' => $folder,
-            'sold' => false,
+            'sold' => $request->get('sold'),
             'images' => $card->data['images']
         ];
 

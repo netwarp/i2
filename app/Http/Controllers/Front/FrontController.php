@@ -37,10 +37,31 @@ class FrontController extends Controller
         dd($_SERVER["HTTP_REFERER"]);
     }
 
+    public function getAgence() {
+        $content = Page::where('label', 'agence')->firstOrFail();
+        $content = $content->content;
+
+        return view('front.agence', compact('content'));
+    }
+
+    public function getSold() {
+        $cards = Card::all();
+
+        $card_sold = [];
+        foreach ($cards as $card) {
+            if ($card->data['sold']) {
+                $card_sold[] = $card;
+            }
+        }
+
+        $cards = $card_sold;
+
+        return view('front.buy', compact('cards'));
+    }
+
     public function getCgv() {
         $content = Page::where('label', 'cgv')->firstOrFail();
         $content = $content->content;
-        //$content = Markdown::convertToHtml($content);
 
         return view('front.cgv', compact('content'));
     }

@@ -45,6 +45,13 @@
 									<textarea name="description" rows="8" class="form-control">{{ $card->data['description'] ?? '' }}</textarea>
 								</div>
 								<hr>
+								<div class="form-group">
+									<label for="#">Vendu</label>
+									<select class="form-control" name="sold">
+										<option value="0">Non</option>
+										<option value="1" {{ $card->data['sold'] ?? 'selected' }}>Oui</option>
+									</select>
+								</div>
 							</fieldset>
 
 							<fieldset>

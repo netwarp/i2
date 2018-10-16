@@ -11633,7 +11633,46 @@ body {
 }
 
 .footer {
-  background: #000;
+  background: #2a2a2a;
+  color: #999;
+  font-size: 0.9rem;
+  padding: 3rem 1.5rem 3rem;
+}
+
+.footer .is-size-4 {
+  margin-bottom: .9rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.footer li {
+  margin-bottom: .4rem;
+}
+
+.footer a {
+  color: #999;
+  -webkit-transition: .3s ease all;
+  transition: .3s ease all;
+}
+
+.footer a:hover {
+  color: #fff;
+  -webkit-transition: .3s ease all;
+  transition: .3s ease all;
+}
+
+.footer .date {
+  margin-top: 1.4rem;
+}
+
+.footer #social-icons {
+  padding: 1rem;
+  text-align: center;
+}
+
+.footer #social-icons a {
+  font-size: 2rem;
+  margin: 0 .4rem;
 }
 
 .container.mt {
@@ -11678,17 +11717,6 @@ body {
 
 #carousel-index .item {
   text-align: center;
-}
-
-#social-icons {
-  padding: 1rem;
-  text-align: center;
-}
-
-#social-icons a {
-  font-size: 2rem;
-  color: #fff;
-  margin: 0 .4rem;
 }
 
 /**

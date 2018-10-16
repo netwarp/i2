@@ -87,7 +87,44 @@ body {
 }
 
 .footer {
-    background: #000;
+    background: #2a2a2a;
+    color: #999;
+    font-size: 0.9rem;
+    padding: 3rem 1.5rem 3rem;
+
+    .is-size-4 {
+        margin-bottom: .9rem;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    li {
+        margin-bottom: .4rem;
+    }
+
+    a {
+        color: #999;
+        transition: .3s ease all;
+
+        &:hover {
+            color: #fff;
+            transition: .3s ease all;
+        }
+    }
+
+    .date {
+        margin-top: 1.4rem;
+    }
+
+    #social-icons {
+        padding: 1rem;
+        text-align: center;
+
+        a {
+            font-size: 2rem;
+            margin: 0 .4rem;
+        }
+    }
 }
 
 .container.mt {
@@ -125,17 +162,6 @@ body {
 
     .item {
         text-align: center;
-    }
-}
-
-#social-icons {
-    padding: 1rem;
-    text-align: center;
-
-    a {
-        font-size: 2rem;
-        color: #fff;
-        margin: 0 .4rem;
     }
 }
 

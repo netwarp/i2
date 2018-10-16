@@ -22,6 +22,10 @@ Route::group(['namespace' => 'Front', 'as' => 'front.'], function() {
     Route::get('vendre', ['as' => 'getSell', 'uses' => 'FrontController@getSell']);
     Route::post('vendre', ['as' => 'postSell', 'uses' => 'FrontController@postSell']);
 
+    Route::get('agence', ['as' => 'getAgence', 'uses' => 'FrontController@getAgence']);
+
+    Route::get('vendus', ['as' => 'getSold', 'uses' => 'FrontController@getSold']);
+
     Route::get('cgv', ['as' => 'getCgv', 'uses' => 'FrontController@getCgv']);
 });
 

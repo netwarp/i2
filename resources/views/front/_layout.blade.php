@@ -23,24 +23,42 @@
                 <ul>
                     <li><a href="{{ action('Front\FrontController@getBuy') }}" class="{{ $name == 'front.getBuy' || $name == 'front.getCard' ? 'active' : '' }}">Acheter</a></li>
                     <li><a href="{{ action('Front\FrontController@getSell') }}" class="{{ Route::currentRouteName() == 'front.getSell' ? 'active' : '' }}">Vendre</a></li>
-                    <li><a href="#">L'agence</a></li>
-                    <li><a href="#">Vendus</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="{{ action('Front\FrontController@getAgence') }}" class="{{ Route::currentRouteName() == 'front.getAgence' ? 'active' : '' }}">L'agence</a></li>
+                    <li><a href="{{ action('Front\FrontController@getSold') }}" class="{{ Route::currentRouteName() == 'front.getSold' ? 'active' : '' }}">Vendus</a></li>
                 </ul>
             </nav>
         </header>
         <main>
             @yield('content')
         </main>
-        <div class="has-background-black-ter" id="social-icons">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-        </div>
         <footer class="footer">
-
-            <div class="content has-text-centered">
-                {{ date('Y') }} - Tout droit réservé
+            <div class="columns">
+                <div class="column">
+                    <div class="is-size-4">Site</div>
+                    <ul>
+                        <li><a href="{{ action('Front\FrontController@getBuy') }}">Acheter</a></li>
+                        <li><a href="{{ action('Front\FrontController@getSell') }}">Vendre</a></li>
+                        <li><a href="{{ action('Front\FrontController@getAgence') }}">Agence</a></li>
+                        <li><a href="{{ action('Front\FrontController@getSold') }}">Vendus</a></li>
+                        <li><a href="{{ action('Front\FrontController@getCgv') }}">CGV</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <div class="is-size-4">L'agence</div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis enim reprehenderit facilis, modi consequuntur labore provident odio, eaque! Dignissimos nisi consequatur sint, pariatur et possimus! Delectus repellendus aut quisquam atque.
+                    </p>
+                    <div class="date">
+                        {{ date('Y') }} Tous droits réservés.
+                    </div>
+                </div>
+                <div class="column" id="social-icons">
+                    <div class="is-size-4">Social</div>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                </div>
             </div>
         </footer>
         @stack('js')
