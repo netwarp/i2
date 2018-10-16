@@ -10,7 +10,7 @@
 						<br>
 						<a href="{{ action('Dashboard\CardsController@create') }}" class="btn btn-success">Nouveau</a>
 						<br><br>
-						<table class="table table-stripped">
+						<table class="table table-striped table-bordered">
 							<thead>
 								<th>Id</th>
 								<th>Titre</th>
@@ -41,7 +41,7 @@
 											<form action="{{ action('Dashboard\CardsController@destroy', $card->id) }}" method="POST">
 												@csrf
 												@method('delete')
-												<button type="submit" class="btn btn-danger">Supprimer</button>
+												<button type="submit" class="btn btn-danger" style="margin-left: 16px;">Supprimer</button>
 											</form>
 										</td>
 									</tr>
