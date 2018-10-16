@@ -1,10 +1,8 @@
 @extends('front._layout')
 
 @section('content')
-    <div class="container">
+    <div class="container mt">
         <div class="content">
-            <h1 class="is-size-1">Acheter</h1>
-
             <div class="select">
                     <select id="select">
                         <option value="date">Par date</option>
@@ -14,44 +12,44 @@
                     </select>
                 </div>
             <div id="cards">
-                
-                @for($i = 0; $i < 4; $i++)
-                    @php 
-                        $date = rand(10000, 1000000);
-                        $surface = rand(50, 200);
-                        $rooms = rand(1, 9);
-                        $price = rand(50000, 100000);
+                @foreach($cards as $card)
+                    @php
+                        $slug = $card->data['title'];
+                        $slug = str_slug($slug);
                     @endphp
-                    <div class="card card-margin" data-surface="{{ $surface }}" data-rooms="{{ $rooms }}" data-price="{{ $price }}" data-date="{{ $date }}">
-                        <a href="/fiche" class="picture">
-                            <img src="/img/carousel-ipsum.jpeg" alt="card">
+
+                    <div class="card card-margin" data-surface="{{ $card->data['surface'] }}" data-rooms="{{ $card->data['rooms'] }}" data-price="{{ $card->data['price'] }}" data-date="{{ $card->created_at }}">
+
+                        <a href="{{ action('Front\FrontController@getCard', [$card->id, $slug]) }}" class="picture">
+                            <img src="/images/{{ $card->getFirstImage() }}" alt="card">
                         </a>
         
                         <div class="card-content">
                             <h2>
-                                <a href="{{ action('Front\FrontController@getCard') }}">
-                                   {{ $i }} Lorem, ipsum dolor sit amet consectetur a 
+                                <a href="{{ action('Front\FrontController@getCard', [$card->id, $slug]) }}">
+                                   {{ $card->data['title'] }}
                                 </a>
                             </h2>
                             
                             <p>
-                                {{ $i }} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias beatae, vel ipsam impedit architecto doloribus iure nostrum iste qui unde, doloremque nesciunt vero ducimus. Voluptatem vitae harum tempore incidunt inventore!
+                                {{ $card->data['description'] }}
                             </p>
+
 
                             <div class="data">
                                 <div class="surface">
-                                    {{ $surface }} m²
+                                    {{ $card->data['surface'] }} m²
                                 </div>
                                 <div class="rooms">
-                                    {{ $rooms }} pièces
+                                    {{ $card->data['rooms'] }} pièces
                                 </div>
                                 <div class="price">
-                                    {{ $price }} €
+                                    {{ $card->data['price'] }} €
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
 
         </div>

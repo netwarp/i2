@@ -11622,6 +11622,10 @@ body {
   padding: 1.2rem;
 }
 
+#header nav ul li a.active {
+  border-bottom: 2px solid;
+}
+
 @media screen and (max-width: 768px) {
   #header nav ul li a {
     text-align: center;
@@ -11630,6 +11634,10 @@ body {
 
 .footer {
   background: #000;
+}
+
+.container.mt {
+  margin: 2rem auto;
 }
 
 /**

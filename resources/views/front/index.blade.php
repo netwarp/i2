@@ -25,17 +25,15 @@
         @foreach($cards as $card)
         <div class="item">
             <div>
-                <a href="{{ action('Front\FrontController@getCard', $card->id) }}"><img src="/images/{{ $card->getFirstImage() }}" alt=""></a>
+                @php
+                    $slug = $card->data['title'];
+                    $slug = str_slug($slug);
+                @endphp
+                <a href="{{ action('Front\FrontController@getCard', [$card->id, $slug]) }}"><img src="/images/{{ $card->getFirstImage() }}" alt=""></a>
             </div>
             <h4>{{ $card->data['title'] }}</h4>
         </div>
         @endforeach
-    </div>
-
-    <div class="has-background-black-ter" id="social-icons">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
     </div>
 @endsection
 

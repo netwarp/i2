@@ -6,7 +6,7 @@
 @endpush
 
 @section('content')
-    <div class="container">
+    <div class="container mt">
         <div class="content">
             <div class="box">
                 <figure class="columns">

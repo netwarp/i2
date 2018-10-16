@@ -17,7 +17,7 @@ Route::group(['namespace' => 'Front', 'as' => 'front.'], function() {
 
     Route::get('acheter', ['as' => 'getBuy', 'uses' => 'FrontController@getBuy']);
 
-    Route::get('fiche/{id}', ['as' => 'getCard', 'uses' => 'FrontController@getCard']);
+    Route::get('fiche/{id}/{slug}', ['as' => 'getCard', 'uses' => 'FrontController@getCard']);
 
     Route::get('vendre', ['as' => 'getSell', 'uses' => 'FrontController@getSell']);
     Route::post('vendre', ['as' => 'postSell', 'uses' => 'FrontController@postSell']);

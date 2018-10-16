@@ -17,9 +17,12 @@
             </div>
 
             <nav id="nav">
+                @php 
+                    $name = Route::currentRouteName();
+                @endphp
                 <ul>
-                    <li><a href="{{ action('Front\FrontController@getBuy') }}">Acheter</a></li>
-                    <li><a href="{{ action('Front\FrontController@getSell') }}">Vendre</a></li>
+                    <li><a href="{{ action('Front\FrontController@getBuy') }}" class="{{ $name == 'front.getBuy' || $name == 'front.getCard' ? 'active' : '' }}">Acheter</a></li>
+                    <li><a href="{{ action('Front\FrontController@getSell') }}" class="{{ Route::currentRouteName() == 'front.getSell' ? 'active' : '' }}">Vendre</a></li>
                     <li><a href="#">L'agence</a></li>
                     <li><a href="#">Vendus</a></li>
                     <li><a href="#">Contact</a></li>
@@ -29,7 +32,13 @@
         <main>
             @yield('content')
         </main>
+        <div class="has-background-black-ter" id="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
         <footer class="footer">
+
             <div class="content has-text-centered">
                 {{ date('Y') }} - Tout droit réservé
             </div>

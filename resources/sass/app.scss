@@ -73,6 +73,10 @@ body {
                     font-size: 1.4rem;
                     padding: 1.2rem;
 
+                    &.active {
+                        border-bottom: 2px solid;
+                    }
+
                     @media screen and (max-width: 768px) {
                         text-align: center;
                     }
@@ -84,6 +88,10 @@ body {
 
 .footer {
     background: #000;
+}
+
+.container.mt {
+    margin: 2rem auto;
 }
 
 /**

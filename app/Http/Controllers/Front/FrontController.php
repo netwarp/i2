@@ -17,11 +17,12 @@ class FrontController extends Controller
     }
 
     public function getBuy() {
+        $cards = Card::all();
 
-        return view('front.buy', compact('card'));
+        return view('front.buy', compact('cards'));
     }
 
-    public function getCard($id) {
+    public function getCard($id, $slug) {
 
         $card = Card::findOrFail($id);
 

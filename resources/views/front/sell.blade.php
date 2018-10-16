@@ -4,7 +4,8 @@
 <style>
     fieldset {
         padding: 2rem;
-        border: 1px solid #eee;
+        border: 1px solid #c4c4c4;
+        margin-bottom: 4rem;
     }
 
     legend {
@@ -16,11 +17,15 @@
         margin-right: 1rem;
         min-width: 100px;
     }
+
+    .textarea {
+        min-width: inherit;
+    }
 </style>
 @endpush
 
 @section('content')
-    <div class="container">
+    <div class="container mt">
         <div class="content">
             <div class="box">
                 <form action="{{ action('Front\FrontController@postSell') }}" method="POST">
@@ -54,9 +59,9 @@
                         <legend>Votre demande</legend>
                             <div class="field is-grouped">
                                 <label for="#">Message</label>
-                                <div class="control">
-                                    <textarea class="textarea" type="text" placeholder="Danger textarea"></textarea>
-                                </div>
+                     
+                                    <textarea class="textarea" placeholder="e.g. Hello world"></textarea>
+                           
                             </div>
                     </fieldset>
                     
@@ -74,7 +79,7 @@
                             <input class="input" type="text" placeholder="Text input">
                         </div>
                     </fieldset>
-                    <button type="submit">Envoie</button>
+                    <button type="submit" class="button is-success is-large is-fullwidth">Envoyer</button>
                 </form>
             </div>
         </div>
