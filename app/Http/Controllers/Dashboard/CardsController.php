@@ -58,6 +58,7 @@ class CardsController extends Controller
             'rooms' => $request->get('rooms'),
             'price' => $request->get('price'),
             'description' => $request->get('description'),
+            'type' => $request->get('type'),
             'folder' => $folder,
             'sold' => false,
             'images' => [],
@@ -142,6 +143,7 @@ class CardsController extends Controller
             'rooms' => $request->get('rooms'),
             'price' => $request->get('price'),
             'description' => $request->get('description'),
+            'type' => $request->get('type'),
             'folder' => $folder,
             'sold' => $request->get('sold'),
             'images' => $card->data['images']

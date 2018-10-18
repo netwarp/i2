@@ -7,14 +7,49 @@
 
 @section('content')
     <div id="background-form">
-        <form action="#" method="POST">
+        <form action="{{ action('Front\FrontController@getBuy') }}" method="get">
             <div class="box">
-                <div class="field is-horizontal has-addons">
-                    <input class="input is-medium" placeholder="Name" type="text">
-                    <input class="input is-medium" placeholder="Name" type="text">
-                    <input class="input is-medium" placeholder="Name" type="text">
-
-                    <button class="button is-medium is-dark" type="submit"><i class="fa fa-search"></i> Chercher</button>
+                <div class="field">
+                    <label class="field-label">Localisation</label>
+                    <input type="text" class="input is-medium" placeholder="Localisation">
+                </div>
+                <div class="field">
+                    <label class="field-label">Prix</label>
+                    <div class="field-body">
+                        <div class="field">
+                            <input type="text" class="input is-medium" placeholder="Minimum" name="price-min">
+                        </div>
+                        <div class="field">
+                            <input type="text" class="input is-medium" placeholder="Maximum" name="price-max">
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="field-label">Surface</label>
+                    <div class="field-body">
+                        <div class="field">
+                            <input type="text" class="input is-medium" placeholder="Minimum" name="surface-min">
+                        </div>
+                        <div class="field">
+                            <input type="text" class="input is-medium" placeholder="Maximum" name="surface-max">
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="field-label">Nombre de pièces</label>
+                    <div class="field-body">
+                        <div class="field">
+                            <input type="text" class="input is-medium" placeholder="Minimum" name="rooms-min">
+                        </div>
+                        <div class="field">
+                            <input type="text" class="input is-medium" placeholder="Maximum" name="rooms-max">
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <button class="button is-dark is-medium is-fullwidth">
+                        Chercher <i class="fa fa-search"></i>
+                    </button>
                 </div>
             </div>
         </form>

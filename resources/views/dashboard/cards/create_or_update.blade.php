@@ -41,6 +41,16 @@
 								</div>
 
 								<div class="form-group">
+									<label for="#">Type</label>
+									<select class="form-control" name="type">
+										<option value="maison" {{ isset($card) && $card->data['type'] == 'maison' ? 'selected' : '' }}>Maison</option>
+										<option value="appartement" {{ isset($card) && $card->data['type'] == 'appartement' ? 'selected' : '' }}>Appartement</option>
+										<option value="hotel" {{ isset($card) && $card->data['type'] == 'hotel' ? 'selected' : '' }}>Hotel</option>
+										<option value="parking" {{ isset($card) && $card->data['type'] == 'parking' ? 'selected' : '' }}>Parking</option>
+									</select>
+								</div>
+
+								<div class="form-group">
 									<label for="#">Contenu</label>
 									<textarea name="description" rows="8" class="form-control">{{ $card->data['description'] ?? '' }}</textarea>
 								</div>
