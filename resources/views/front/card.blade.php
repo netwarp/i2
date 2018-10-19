@@ -32,7 +32,10 @@
                         <p>
                             {{ $card->data['description'] ?? '' }}
                         </p>
-
+                        
+                        <div>
+                            Type: <span class="has-text-weight-bold">{{ $card->data['type'] }}</span>
+                        </div>
                         <div>
                             Surface: <span class="has-text-weight-bold">{{ $card->data['surface'] ?? '' }} m²</span>
                         </div>

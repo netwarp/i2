@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use App\Models\Card;
 use App\Models\Page;
+use DB;
+use Carbon\Carbon;
 
 class FrontController extends Controller
 {
@@ -42,7 +44,35 @@ class FrontController extends Controller
     }
 
     public function postSell(Request $request) {
-        dd($_SERVER["HTTP_REFERER"]);
+
+        $request->validate([
+            'civilite' => 'required',
+            'prenom' => 'required',
+            'nom' => 'required',
+            'tel' => 'required',
+            'email' => 'required',
+            'message' => 'required',
+        ]);
+        
+        $data = [
+            'civilite' => $request->get('civilite'),
+            'prenom' => $request->get('prenom'),
+            'nom' => $request->get('nom'),
+            'tel' => $request->get('tel'),
+            'email' => $request->get('email'),
+            'message' => $request->get('message'),
+            'potal' => $request->get('postal'),
+            'type' => $request->get('type'),
+            'created_at' => Carbon::now(),
+        ];
+
+        $data = json_encode($data);
+
+        DB::table('messages')->insert([
+            'data' => $data
+        ]);
+
+        return redirect()->back()->with('success', 'Votre message a été envoyé avec succès');
     }
 
     public function getAgence() {

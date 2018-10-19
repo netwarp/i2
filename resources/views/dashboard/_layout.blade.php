@@ -23,6 +23,7 @@
 						</a>
 						<a href="{{ action('Dashboard\DashboardController@getAgence') }}" class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'dashboard.getAgence' ? 'active' : '' }}">L'agence</a>
 						<a href="{{ action('Dashboard\DashboardController@getCgv') }}" class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'dashboard.getCgv' ? 'active' : '' }}">Mentions légales</a>
+						<a href="{{ action('Dashboard\MessagesController@index') }}" class="list-group-item list-group-item-action {{ Route::currentRouteName() == 'dashboard.messages.index' ? 'active' : '' }}">Messages</a>
 						<a href="/" class="list-group-item list-group-item-action" target="_blank">Site publique</a>
 					</div>
 				</div>

@@ -5,12 +5,18 @@ namespace App\Http\Controllers\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
+use DB;
+use App\Models\Card;
 
 
 class DashboardController extends Controller
 {
     public function getIndex() {
-    	return view('dashboard.index');
+        $cards = Card::count();
+
+        $messages = DB::table('messages')->count();
+
+    	return view('dashboard.index', compact('cards', 'messages'));
     }
 
     public function getCgv() {

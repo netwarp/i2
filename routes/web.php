@@ -38,6 +38,8 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dash
 
 	Route::resource('cards', 'CardsController');
 
+	Route::resource('messages', 'MessagesController');
+
 	Route::get('cgv', ['as' => 'getCgv', 'uses' => 'DashboardController@getCgv']);
 	Route::post('cgv', ['as' => 'postCgv', 'uses' => 'DashboardController@postCgv']);
 

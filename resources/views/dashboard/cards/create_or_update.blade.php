@@ -43,10 +43,10 @@
 								<div class="form-group">
 									<label for="#">Type</label>
 									<select class="form-control" name="type">
-										<option value="maison" {{ isset($card) && $card->data['type'] == 'maison' ? 'selected' : '' }}>Maison</option>
-										<option value="appartement" {{ isset($card) && $card->data['type'] == 'appartement' ? 'selected' : '' }}>Appartement</option>
-										<option value="hotel" {{ isset($card) && $card->data['type'] == 'hotel' ? 'selected' : '' }}>Hotel</option>
-										<option value="parking" {{ isset($card) && $card->data['type'] == 'parking' ? 'selected' : '' }}>Parking</option>
+										<option value="Maison" {{ isset($card) && $card->data['type'] == 'Maison' ? 'selected' : '' }}>Maison</option>
+										<option value="Appartement" {{ isset($card) && $card->data['type'] == 'Appartement' ? 'selected' : '' }}>Appartement</option>
+										<option value="Hotel" {{ isset($card) && $card->data['type'] == 'Hotel' ? 'selected' : '' }}>Hotel</option>
+										<option value="Parking" {{ isset($card) && $card->data['type'] == 'Parking' ? 'selected' : '' }}>Parking</option>
 									</select>
 								</div>
 
