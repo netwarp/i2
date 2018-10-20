@@ -50,6 +50,6 @@ class DashboardController extends Controller
     		'content' => $request->get('content')
     	]);
 
-    	return redirect()->back()->with('success', 'CGV modifiées avec succès');
+    	return redirect()->back()->with('success', 'Agence modifiées avec succès');
     }
 }

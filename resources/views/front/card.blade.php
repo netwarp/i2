@@ -29,9 +29,9 @@
                         <h1 class="is-size-3 has-text-centered">{{ $card->data['title'] ?? '' }}</h1>
                         <a href="{{ action('Front\FrontController@getSell') }}" class="button is-medium is-link is-fullwidth">Contactez nous</a>
                         <hr>
-                        <p>
-                            {{ $card->data['description'] ?? '' }}
-                        </p>
+                        <div>
+                            @markdown($card->data['description'])
+                        </div>
                         
                         <div>
                             Type: <span class="has-text-weight-bold">{{ $card->data['type'] }}</span>

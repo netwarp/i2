@@ -44,6 +44,7 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard', 'as' => 'dash
 	Route::post('cgv', ['as' => 'postCgv', 'uses' => 'DashboardController@postCgv']);
 
 	Route::get('agence', ['as' => 'getAgence', 'uses' => 'DashboardController@getAgence']);
+	Route::post('agence', ['as' => 'postAgence', 'uses' => 'DashboardController@postAgence']);
 });
 
 Route::get('images/cards/{folder}/{file}', function($folder, $file) {

@@ -18,7 +18,7 @@
                         $slug = str_slug($slug);
                     @endphp
 
-                    <div class="card card-margin" data-surface="{{ $card->data['surface'] }}" data-rooms="{{ $card->data['rooms'] }}" data-price="{{ $card->data['price'] }}" data-date="{{ $card->created_at }}">
+                    <div class="card card-margin" data-type="{{ $card->data['type'] }}" data-surface="{{ $card->data['surface'] }}" data-rooms="{{ $card->data['rooms'] }}" data-price="{{ $card->data['price'] }}" data-date="{{ $card->created_at }}">
 
                         <a href="{{ action('Front\FrontController@getCard', [$card->id, $slug]) }}" class="picture">
                             <img src="/images/{{ $card->getFirstImage() }}" alt="card">
@@ -31,9 +31,9 @@
                                 </a>
                             </h2>
                             
-                            <p>
-                                {{ $card->data['description'] }}
-                            </p>
+                            <div class="description">
+                                @markdown($card->data['description'])
+                            </div>
 
 
                             <div class="data">
@@ -45,6 +45,9 @@
                                 </div>
                                 <div class="price">
                                     {{ $card->data['price'] }} €
+                                </div>
+                                <div class="type">
+                                    {{ $card->data['type'] }}
                                 </div>
                             </div>
                         </div>

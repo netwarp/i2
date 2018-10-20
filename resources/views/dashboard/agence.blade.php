@@ -12,7 +12,7 @@
 					<div class="card-body">
 						<h1>Agence</h1>
 
-						<form action="{{ action('Dashboard\DashboardController@postCgv') }}" method="POST">
+						<form action="{{ action('Dashboard\DashboardController@postAgence') }}" method="POST">
 							@csrf
 
 							<div class="form-group">
