@@ -2,15 +2,33 @@
 
 @section('content')
     <div class="container mt">
+        <div>
+            Votre recherche
+        </div>
         <div class="content">
             <div class="select">
-                    <select id="select">
-                        <option value="date">Par date</option>
-                        <option value="price">Par prix</option>
-                        <option value="surface">Par m²</option>
-                        <option value="rooms">Par pièces</option>
-                    </select>
-                </div>
+                <select id="">
+                    <option value="" disabled selected>Trier</option>
+                    <option value="date">Par date</option>
+                    <option value="price">Par prix</option>
+                    <option value="surface">Par m²</option>
+                    <option value="rooms">Par pièces</option>
+                </select>
+            </div>
+            <div class="select">
+                <select id="">
+                    <option value="" disabled selected>Type de bien</option>
+                    <option value="Maison">Maison</option>
+                    <option value="Appartement">Appartement</option>
+                    <option value="Hotel">Hotel</option>
+                </select>
+            </div>
+            <div class="select">
+                <select id="">
+                    <option value="Vente">Vente</option>
+                    <option value="Location">Location</option>
+                </select>
+            </div>
             <div id="cards">
                 @foreach($cards as $card)
                     @php

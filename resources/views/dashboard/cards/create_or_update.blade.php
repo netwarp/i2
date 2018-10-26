@@ -47,6 +47,9 @@
 										<option value="Appartement" {{ isset($card) && $card->data['type'] == 'Appartement' ? 'selected' : '' }}>Appartement</option>
 										<option value="Hotel" {{ isset($card) && $card->data['type'] == 'Hotel' ? 'selected' : '' }}>Hotel</option>
 										<option value="Parking" {{ isset($card) && $card->data['type'] == 'Parking' ? 'selected' : '' }}>Parking</option>
+										<option value="Particulier" {{ isset($card) && $card->data['type'] == 'Particulier' ? 'selected' : '' }}>Particulier</option>
+										<option value="Vignoble" {{ isset($card) && $card->data['type'] == 'Vignoble' ? 'selected' : '' }}>Vignoble</option>
+										<option value="Terrain" {{ isset($card) && $card->data['type'] == 'Terrain' ? 'selected' : '' }}>Terrain</option>
 									</select>
 								</div>
 
