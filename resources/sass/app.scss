@@ -138,11 +138,11 @@ body {
 
 #background-form {
     height: 80vh;
-    background: url('/img/background.jpeg');
+    background: url('/img/background.JPEG');
     display: flex;
     background-size: cover;
     justify-content: center;
-    align-items: end;
+    align-items: flex-end;
     padding-bottom: 5rem;
 
 

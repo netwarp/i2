@@ -11692,7 +11692,7 @@ body {
   display: flex;
   background-size: cover;
   justify-content: center;
-  align-items: end;
+  align-items: flex-end;
   padding-bottom: 5rem;
 }
 
