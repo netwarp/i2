@@ -17,10 +17,13 @@
             </div>
             <div class="select">
                 <select id="">
-                    <option value="" disabled selected>Type de bien</option>
                     <option value="Maison">Maison</option>
                     <option value="Appartement">Appartement</option>
                     <option value="Hotel">Hotel</option>
+                    <option value="Parking">Parking</option>
+                    <option value="Particulier">Particulier</option>
+                    <option value="Vignoble">Vignoble</option>
+                    <option value="Terrain">Terrain</option>
                 </select>
             </div>
             <div class="select">
@@ -29,6 +32,7 @@
                     <option value="Location">Location</option>
                 </select>
             </div>
+
             <div id="cards">
                 @foreach($cards as $card)
                     @php
@@ -56,16 +60,19 @@
 
                             <div class="data">
                                 <div class="surface">
-                                    {{ $card->data['surface'] }} m²
+                                    {{ $card->data['surface'] ?? '' }} m²
                                 </div>
                                 <div class="rooms">
-                                    {{ $card->data['rooms'] }} pièces
+                                    {{ $card->data['rooms'] ?? '' }} pièces
                                 </div>
                                 <div class="price">
-                                    {{ $card->data['price'] }} €
+                                    {{ $card->data['price'] ?? '' }} €
                                 </div>
                                 <div class="type">
-                                    {{ $card->data['type'] }}
+                                    {{ $card->data['type'] ?? '' }}
+                                </div>
+                                <div class="type">
+                                    {{ $card->data['localisation'] ?? '' }}
                                 </div>
                             </div>
                         </div>

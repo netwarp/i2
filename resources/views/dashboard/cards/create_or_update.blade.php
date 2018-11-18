@@ -41,6 +41,11 @@
 								</div>
 
 								<div class="form-group">
+									<label for="#">Localisation</label>
+									<input type="text" class="form-control" name="localisation" value="{{ $card->data['localisation'] ?? '' }}">
+								</div>
+
+								<div class="form-group">
 									<label for="#">Type</label>
 									<select class="form-control" name="type">
 										<option value="Maison" {{ isset($card) && $card->data['type'] == 'Maison' ? 'selected' : '' }}>Maison</option>

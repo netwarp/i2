@@ -47,6 +47,7 @@ class CardsController extends Controller
             'surface' => 'required',
             'rooms' => 'required',
             'price' => 'required',
+            'localisation' => 'required',
             'description' => 'required',
         ]);
 
@@ -57,6 +58,7 @@ class CardsController extends Controller
             'surface' => $request->get('surface'),
             'rooms' => $request->get('rooms'),
             'price' => $request->get('price'),
+            'localisation' => $request->get('localisation'),
             'description' => $request->get('description'),
             'type' => $request->get('type'),
             'folder' => $folder,

@@ -140,8 +140,11 @@ body {
     height: 80vh;
     background: url('/img/background.jpeg');
     display: flex;
+    background-size: cover;
     justify-content: center;
-    align-items: center;
+    align-items: end;
+    padding-bottom: 5rem;
+
 
     .input, .button {
         border-radius: 0;

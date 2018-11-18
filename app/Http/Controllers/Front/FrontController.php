@@ -19,16 +19,8 @@ class FrontController extends Controller
     }
 
     public function getBuy() {
-
-        if (isset($_GET['price']) || isset($_GET['surface']) || isset($_GET['rooms'])) {
-            $cards = Card::where('data->surface', (string) $_GET['surface'])
-            ->orWhere('data->price', (string) $_GET['price'])
-            ->orWhere('data->rooms', (string) $_GET['rooms'])
-            ->get();
-        } 
-        else {
-            $cards = Card::all();            
-        }
+        $cards = Card::all();            
+    
         return view('front.buy', compact('cards'));
     }
 
