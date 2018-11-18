@@ -11686,7 +11686,7 @@ body {
 
 #background-form {
   height: 90vh;
-  background: url("/img/landing.jpeg") no-repeat;
+  background: url("/img/landing.JPEG") no-repeat;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
