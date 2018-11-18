@@ -51,7 +51,7 @@
                             <label class="label">Civilité</label>
 
                             <div class="select">
-                                <select>
+                                <select name="civilite">
                                     <option value="Monsieur">Monsieur</option>
                                     <option value="Madame">Madame</option>
                                 </select>
