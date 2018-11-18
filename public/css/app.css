@@ -11685,7 +11685,7 @@ body {
 */
 
 #background-form {
-  height: 90vh;
+  height: 72vh;
   background: url("/img/landing.JPEG") no-repeat;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11694,6 +11694,7 @@ body {
   justify-content: center;
   align-items: flex-end;
   padding-bottom: 5rem;
+  background-position: center;
 }
 
 

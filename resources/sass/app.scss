@@ -137,13 +137,14 @@ body {
 */
 
 #background-form {
-    height: 80vh;
+    height: 72vh;
     background: url('/img/background.JPEG');
     display: flex;
     background-size: cover;
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 5rem;
+    background-position: center;
 
 
     .input, .button {
