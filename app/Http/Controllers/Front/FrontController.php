@@ -9,11 +9,14 @@ use App\Models\Card;
 use App\Models\Page;
 use DB;
 use Carbon\Carbon;
+use Mail;
+use App\Mail\ContactEmail;
+use Cache;
 
 class FrontController extends Controller
 {
     public function getIndex() {
-        $cards = Card::all();
+       $cards = Card::all();
 
         return view('front.index', compact('cards'));
     }
@@ -58,11 +61,11 @@ class FrontController extends Controller
             'created_at' => Carbon::now(),
         ];
 
-        $data = json_encode($data);
-
         DB::table('messages')->insert([
-            'data' => $data
+            'data' => json_encode($data)
         ]);
+
+        Mail::to('vendome.real.estate16@gmail.com')->send(new ContactEmail($data));
 
         return redirect()->back()->with('success', 'Votre message a été envoyé avec succès');
     }
@@ -85,5 +88,20 @@ class FrontController extends Controller
         $content = $content->content;
 
         return view('front.cgv', compact('content'));
+    }
+
+    public function cards() {
+        $cards = Card::all();
+
+        foreach ($cards as $card) {
+
+            $card->slug = $card->data['title'];
+            $card->img = $card->getFirstImage();
+            $card->type = $card->data['type'];
+            $card->timestamp = $card->created_at->getTimestamp();
+            $card->visible = true;
+        }
+
+        return $cards;
     }
 }

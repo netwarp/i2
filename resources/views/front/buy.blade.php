@@ -1,13 +1,21 @@
 @extends('front._layout')
 
+@push('css')
+<style>
+    ::placeholder { /* Most modern browsers support this now. */
+       color: #000 !important;
+    }
+</style>
+@endpush
+
 @section('content')
-    <div class="container mt">
+    <div class="container mt" id="app">
         <div>
             Votre recherche
         </div>
         <div class="content">
             <div class="select">
-                <select id="">
+                <select @change="sort(tri)" v-model="tri">
                     <option value="" disabled selected>Trier</option>
                     <option value="date">Par date</option>
                     <option value="price">Par prix</option>
@@ -16,7 +24,8 @@
                 </select>
             </div>
             <div class="select">
-                <select id="">
+                <select @change="sortType(type)" v-model="type">
+                    <option value="" disabled selected>Type de bien</option>
                     <option value="Maison">Maison</option>
                     <option value="Appartement">Appartement</option>
                     <option value="Hotel">Hotel</option>
@@ -32,99 +41,128 @@
                     <option value="Location">Location</option>
                 </select>
             </div>
+            <span>
+                <input id="search" class="input" type="search" placeholder="Localisation" style="width: inherit;" v-model="localisation" @keyup="localisationFilter(localisation)">
+            </span>
 
             <div id="cards">
-                @foreach($cards as $card)
-                    @php
-                        $slug = $card->data['title'];
-                        $slug = str_slug($slug);
-                    @endphp
+                <div class="card card-margin" v-for="card in cards" v-if="card.visible">
+                    <a :href="'/fiche/' + card.id + '/' + card.slug" class="picture">
+                        <img :src="'/images/' + card.img" alt="card">
+                    </a>
+                    <div class="card-content">
+                        <h2>
+                            <a :href="'/fiche/' + card.id + '/' + card.slug">
+                                @{{ card.data.title }}
+                            </a>
+                        </h2>
+                        <div class="description">
+                            @{{ card.data.description }}
+                        </div>
 
-                    <div class="card card-margin" data-type="{{ $card->data['type'] }}" data-surface="{{ $card->data['surface'] }}" data-rooms="{{ $card->data['rooms'] }}" data-price="{{ $card->data['price'] }}" data-date="{{ $card->created_at }}">
-
-                        <a href="{{ action('Front\FrontController@getCard', [$card->id, $slug]) }}" class="picture">
-                            <img src="/images/{{ $card->getFirstImage() }}" alt="card">
-                        </a>
-        
-                        <div class="card-content">
-                            <h2>
-                                <a href="{{ action('Front\FrontController@getCard', [$card->id, $slug]) }}">
-                                   {{ $card->data['title'] }}
-                                </a>
-                            </h2>
-                            
-                            <div class="description">
-                                @markdown($card->data['description'])
+                        <div class="data">
+                            <div class="surface">
+                                @{{ card.data.surface }} m²
                             </div>
-
-
-                            <div class="data">
-                                <div class="surface">
-                                    {{ $card->data['surface'] ?? '' }} m²
-                                </div>
-                                <div class="rooms">
-                                    {{ $card->data['rooms'] ?? '' }} pièces
-                                </div>
-                                <div class="price">
-                                    {{ $card->data['price'] ?? '' }} €
-                                </div>
-                                <div class="type">
-                                    {{ $card->data['type'] ?? '' }}
-                                </div>
-                                <div class="type">
-                                    {{ $card->data['localisation'] ?? '' }}
-                                </div>
+                            <div class="rooms">
+                                 @{{ card.data.rooms }} pièces
+                            </div>
+                            <div class="price">
+                                 @{{ card.data.price }} €
+                            </div>
+                            <div class="type">
+                                 @{{ card.data.type }}
+                            </div>
+                            <div class="type">
+                                @{{ card.data.localisation }}
                             </div>
                         </div>
                     </div>
-                @endforeach
+                </div>
             </div>
-
         </div>
     </div>
 @endsection
 
 @push('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
 <script>
+    var app = new Vue({
+        el: '#app',
 
-    var cards = []
+        created() {
+            this.fetchData()  
+        },
 
-    document.querySelectorAll('.card-margin').forEach((card) => {
-        var obj = {
-            surface: parseInt(card.dataset.surface),
-            price: parseInt(card.dataset.price),
-            rooms: parseInt(card.dataset.rooms),
-            date: parseInt(card.dataset.date),
+        data: {
+            cards: [],
+            tri: '',
+            type: '',
+            localisation: ''
+        },
 
-            html: card.outerHTML
+        methods: {
+            fetchData() {
+                fetch('/api/cards')
+                .then((response) => {
+                    return response.json()
+                })
+                .then((data) => {
+                    this.cards = data
+                    console.log(this.cards)
+                })
+            },
+
+            sort(tri) {
+                switch (tri) {
+                    case 'date': 
+                        this.cards.sort((a, b) => {
+                            return a.timestamp - b.timestamp
+                        })
+                        break
+                    case 'price': 
+                        this.cards.sort((a, b) => {
+                            return a.data.price - b.data.price
+                        })
+                        break
+                    case 'surface': 
+                        this.cards.sort((a, b) => {
+                            return a.data.surface - b.data.surface
+                        })
+                        break
+                    case 'rooms': 
+                        this.cards.sort((a, b) => {
+                            return a.data.rooms - b.data.rooms
+                        })
+                        break
+                    default:
+                        console.log('ok')
+                }
+                //console.log(this.cards)
+            },
+            
+            sortType(type) {
+                console.log('okokok')
+                return this.cards.sort((a, b) => {
+                    return b.type == type
+                })
+            },
+
+            localisationFilter(localisation) {
+
+                this.cards.forEach((card) => {
+                    if (card.data.localisation.includes(localisation)) {
+                        card.visible = true
+                    } else {
+                        card.visible = false
+                    }
+                })
+            }            
+        },
+
+        computed: {
+         
         }
-        
-        cards.push(obj)
-    })
-
-    console.log(cards)
-
-    document.querySelector('#select').addEventListener('change', (event) => {
-
-        let criteria = event.target.value
-        console.log(criteria)
-
-        cards = cards.sort((a, b) => {
-            if (a[criteria] > b[criteria]) 
-                return 1 
-            else if (a[criteria] < b[criteria])
-                return -1 
-            else 
-                return 0
-        })
-
-        var new_dom = ''
-
-        for (card of cards) {
-            new_dom += card.html
-        }
-
-        document.querySelector('#cards').innerHTML = new_dom
     })
 </script>
 @endpush

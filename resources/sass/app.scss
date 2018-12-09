@@ -136,19 +136,34 @@ body {
 *
 */
 
+
+::placeholder { /* Most modern browsers support this now. */
+   color: #000 !important;
+}
+
 #background-form {
     height: 72vh;
-    background: url('/img/background.JPEG');
+    background: url('/img/landing.JPEG');
     display: flex;
     background-size: cover;
     justify-content: center;
-    align-items: flex-end;
-    padding-bottom: 5rem;
+    align-items: center;
+ //   padding-bottom: 5rem;
     background-position: center;
 
+    form {
+        background: rgba(#fff, 0.7);
+        padding: .6rem;
+        border-radius: 10px;
+        border: 1px solid rgba(#444, 0.4);
+
+        optgroup  {
+            font-size: 1.6rem;
+        }
+    }
 
     .input, .button {
-        border-radius: 0;
+    //    border-radius: 0;
     }
 
     .fa {

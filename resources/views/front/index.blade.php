@@ -7,7 +7,49 @@
 
 @section('content')
     <div id="background-form">
-       <a href="/acheter" class="button is-link is-large">Voir les offres</a>
+       <form method="GET" action="/acheter">
+             @csrf
+            <div class="field is-horizontal">
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control is-expanded">
+                            <div class="select is-medium">
+                                <select name="vendre-louer">
+                                    <option value="vendre">A vendre</option>
+                                    <option value="louer">A louer</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control is-expanded">
+                            <div class="select is-medium">
+                                <select name="type">
+                                    <option value="" disabled selected="selected">Type de bien</option>
+                                    <option value="Maison">Maison</option>
+                                    <option value="Appartement">Appartement</option>
+                                    <option value="Hotel">Hotel</option>
+                                    <option value="Parking">Parking</option>
+                                    <option value="Particulier">Particulier</option>
+                                    <option value="Vignoble">Vignoble</option>
+                                    <option value="Terrain">Terrain</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <input class="input is-medium" type="text" placeholder="Ville" name="ville">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control is-expanded has-icons-left has-icons-right">
+                            <button type="submit" class="button is-dark is-medium">Rechercher</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </form>
     </div>
 
     <h2 class="is-size-1 has-text-centered">Les nouveautés</h2>
@@ -40,6 +82,7 @@
                 loop:true,
                 margin:10,
                 nav:true,
+                autoplay: true,
                 responsive:{
                     0:{
                         items:1

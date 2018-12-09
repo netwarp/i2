@@ -27,6 +27,8 @@ Route::group(['namespace' => 'Front', 'as' => 'front.'], function() {
     Route::get('vendus', ['as' => 'getSold', 'uses' => 'FrontController@getSold']);
 
     Route::get('cgv', ['as' => 'getCgv', 'uses' => 'FrontController@getCgv']);
+
+    Route::get('api/cards', 'FrontController@cards');
 });
 
 Route::get('login', ['as' => 'login', 'uses' => 'LoginController@getLogin']);

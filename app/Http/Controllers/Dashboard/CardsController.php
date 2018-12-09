@@ -145,6 +145,7 @@ class CardsController extends Controller
             'rooms' => $request->get('rooms'),
             'price' => $request->get('price'),
             'description' => $request->get('description'),
+            'localisation' => $request->get('localisation'),
             'type' => $request->get('type'),
             'folder' => $folder,
             'sold' => $request->get('sold'),
