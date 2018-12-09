@@ -56,8 +56,7 @@
                                 @{{ card.data.title }}
                             </a>
                         </h2>
-                        <div class="description">
-                            @{{ card.data.description }}
+                        <div class="description" v-html="card.description">
                         </div>
 
                         <div class="data">

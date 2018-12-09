@@ -100,6 +100,7 @@ class FrontController extends Controller
             $card->type = $card->data['type'];
             $card->timestamp = $card->created_at->getTimestamp();
             $card->visible = true;
+            $card->description = Markdown::convertToHtml($card->data['description']);
         }
 
         return $cards;
