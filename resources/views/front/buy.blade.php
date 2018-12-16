@@ -97,7 +97,6 @@
             if (searchParamsURL.searchParams.get('ville')) {
                 var ville = searchParamsURL.searchParams.get('ville')
                 this.localisation = ville
-
             }
         },
 
@@ -146,7 +145,6 @@
                     default:
                         console.log('ok')
                 }
-                //console.log(this.cards)
             },
             
             sortType(type) {
