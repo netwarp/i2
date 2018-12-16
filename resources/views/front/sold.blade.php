@@ -5,9 +5,6 @@
 		<div class="content">
 			<div id="cards">
 				@foreach($cards as $card)
-					<pre>
-						{{ var_dump($card->data['title']) }}
-					</pre>
 					<div class="card card-margin sold">
 						<a href="/fiche/{{ $card->id }}/{{ str_slug($card->data['title']) }}" class="picture">
 							<img src="/images/{{ $card->getFirstImage() }}">
