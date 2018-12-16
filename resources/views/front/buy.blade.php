@@ -47,7 +47,7 @@
             </span>
 
             <div id="cards">
-                <div class="card card-margin" v-for="card in cards" v-if="card.visible">
+                <div class="card card-margin" v-for="card in cards" v-if="card.visible" :class="{ sold: card.data.sold === '1' }">
                     <a :href="'/fiche/' + card.id + '/' + card.slug" class="picture">
                         <img :src="'/images/' + card.img" alt="card">
                     </a>
@@ -94,9 +94,15 @@
             this.fetchData()
 
             const searchParamsURL = new URL(window.location.href)
+
             if (searchParamsURL.searchParams.get('ville')) {
                 var ville = searchParamsURL.searchParams.get('ville')
                 this.localisation = ville
+            }
+
+            if (searchParamsURL.searchParams.get('type')) {
+                var type = searchParamsURL.searchParams.get('type')
+                this.type = type
             }
         },
 
@@ -117,6 +123,7 @@
                     this.cards = data
                     console.log(this.cards)
                     this.localisationFilter(this.localisation)
+                    this.sortType(this.type)
                 })
             },
 
@@ -149,7 +156,7 @@
             
             sortType(type) {
                 this.cards.forEach((card) => {
-                    if (card.type === type) {
+                    if (card.type === type || card.data.localisation.toLowerCase().includes(localisation.toLowerCase())) {
                         card.visible = true
                     } else {
                         card.visible = false

@@ -66,8 +66,9 @@
 								<div class="form-group">
 									<label for="#">Vendu</label>
 									<select class="form-control" name="sold">
+
 										<option value="0">Non</option>
-										<option value="1" {{ $card->data['sold'] ?? 'selected' }}>Oui</option>
+										<option value="1" {{ isset($card->data['sold']) && $card->data['sold'] == '1' ? 'selected' : '' }}>Oui</option>
 									</select>
 								</div>
 							</fieldset>

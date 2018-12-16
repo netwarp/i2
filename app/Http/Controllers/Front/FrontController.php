@@ -79,7 +79,7 @@ class FrontController extends Controller
     public function getSold() {
         $cards = Card::where('data->sold', (string)true)->get();
 
-        return view('front.buy', compact('cards'));
+        return view('front.sold', compact('cards'));
     }
 
     public function getCgv() {
@@ -94,7 +94,7 @@ class FrontController extends Controller
 
         foreach ($cards as $card) {
 
-            $card->slug = $card->data['title'];
+            $card->slug = str_slug($card->data['title']);
             $card->img = $card->getFirstImage();
             $card->type = $card->data['type'];
             $card->timestamp = $card->created_at->getTimestamp();

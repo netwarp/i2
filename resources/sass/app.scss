@@ -192,6 +192,7 @@ body {
 .card-margin {
     margin: 1rem 0;
     display: flex;
+    position: relative;
 
     .picture {
         width: 100%;
@@ -219,5 +220,15 @@ body {
             font-weight: bold;
             font-size: 1.2rem;
         }
+    }
+
+    &.sold:before {
+        content: 'Vendu';
+        background: rgba(#2a2a2a, 0.9);
+        color: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: .4rem 1.4rem;
     }
 }
