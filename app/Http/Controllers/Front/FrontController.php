@@ -16,7 +16,7 @@ use Cache;
 class FrontController extends Controller
 {
     public function getIndex() {
-       $cards = Card::all();
+        $cards = Card::all();
 
         return view('front.index', compact('cards'));
     }
@@ -28,7 +28,6 @@ class FrontController extends Controller
     }
 
     public function getCard($id, $slug) {
-
         $card = Card::findOrFail($id);
 
         return view('front.card', compact('card'));

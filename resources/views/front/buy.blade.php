@@ -26,6 +26,7 @@
             <div class="select">
                 <select @change="sortType(type)" v-model="type">
                     <option value="" disabled selected>Type de bien</option>
+                    <option value="Tous">Tous</option>
                     <option value="Maison">Maison</option>
                     <option value="Appartement">Appartement</option>
                     <option value="Hotel">Hotel</option>
@@ -90,7 +91,14 @@
         el: '#app',
 
         created() {
-            this.fetchData()  
+            this.fetchData()
+
+            const searchParamsURL = new URL(window.location.href)
+            if (searchParamsURL.searchParams.get('ville')) {
+                var ville = searchParamsURL.searchParams.get('ville')
+                this.localisation = ville
+
+            }
         },
 
         data: {
@@ -109,6 +117,7 @@
                 .then((data) => {
                     this.cards = data
                     console.log(this.cards)
+                    this.localisationFilter(this.localisation)
                 })
             },
 
@@ -141,16 +150,22 @@
             },
             
             sortType(type) {
-                console.log('okokok')
-                return this.cards.sort((a, b) => {
-                    return b.type == type
+                this.cards.forEach((card) => {
+                    if (card.type === type) {
+                        card.visible = true
+                    } else {
+                        card.visible = false
+                    }
+
+                    if (type === 'Tous') {
+                        card.visible = true
+                    }
                 })
             },
 
             localisationFilter(localisation) {
-
                 this.cards.forEach((card) => {
-                    if (card.data.localisation.includes(localisation)) {
+                    if (card.data.localisation.toLowerCase().includes(localisation.toLowerCase())) {
                         card.visible = true
                     } else {
                         card.visible = false
@@ -161,6 +176,10 @@
 
         computed: {
          
+        },
+
+        watch: {
+
         }
     })
 </script>

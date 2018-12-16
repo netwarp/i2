@@ -8,7 +8,7 @@
 @section('content')
     <div id="background-form">
        <form method="GET" action="/acheter">
-             @csrf
+            
             <div class="field is-horizontal">
                 <div class="field-body">
                     <div class="field">
@@ -44,7 +44,7 @@
                     </div>
                     <div class="field">
                         <div class="control is-expanded has-icons-left has-icons-right">
-                            <button type="submit" class="button is-dark is-medium">Rechercher</button>
+                            <button type="submit" class="button is-info is-medium">Rechercher</button>
                         </div>
                     </div>
                 </div>
