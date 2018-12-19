@@ -55,16 +55,17 @@ class CardsController extends Controller
 
         $data = [
             'title' => $request->get('title'),
-            'surface' => $request->get('surface'),
-            'rooms' => $request->get('rooms'),
-            'price' => $request->get('price'),
+            'surface' => (int) $request->get('surface'),
+            'rooms' => (int) $request->get('rooms'),
+            'price' => (int) $request->get('price'),
             'localisation' => $request->get('localisation'),
             'description' => $request->get('description'),
             'type' => $request->get('type'),
             'folder' => $folder,
             'sold' => false,
             'images' => [],
-            'folder' => $folder
+            'folder' => $folder,
+            'vendre_louer' => $request->get('vendre_louer')
         ];
 
         if (($request['files'])) {
@@ -141,15 +142,16 @@ class CardsController extends Controller
         
         $data = [
             'title' => $request->get('title'),
-            'surface' => $request->get('surface'),
-            'rooms' => $request->get('rooms'),
-            'price' => $request->get('price'),
+            'surface' => (int) $request->get('surface'),
+            'rooms' => (int) $request->get('rooms'),
+            'price' => (int) $request->get('price'),
             'description' => $request->get('description'),
             'localisation' => $request->get('localisation'),
             'type' => $request->get('type'),
             'folder' => $folder,
             'sold' => $request->get('sold'),
-            'images' => $card->data['images']
+            'images' => $card->data['images'],
+            'vendre_louer' => $request->get('vendre_louer')
         ];
 
         if (($request['files'])) {

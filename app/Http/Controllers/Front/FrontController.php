@@ -21,9 +21,47 @@ class FrontController extends Controller
         return view('front.index', compact('cards'));
     }
 
-    public function getBuy() {
-        $cards = Card::all();            
-    
+    public function getBuy(Request $request) {
+        $cards = new Card;
+
+        if ($request->filled('vendre_louer')) {
+            $vendre_louer = $request->get('vendre_louer');
+            $cards = $cards->where('data->vendre_louer', $vendre_louer);
+        } 
+
+        if ($request->filled('type')) {
+            $type = $request->get('type');
+            $cards = $cards->where('data->type', $type);
+        }
+
+        if ($request->filled('ville')) {
+            $ville = $request->get('ville');
+            $cards = $cards->where('data->localisation', 'LIKE', '%'.$ville.'%');
+        }
+
+        if ($request->filled('tri')) {
+            $tri = $request->get('tri');
+            switch ($tri) {
+                case 'date':
+                    $cards->orderBy('created_at', 'desc');
+                    break;
+                case 'price':
+                    $cards->orderBy('data->price');
+                    break;
+                case 'surface':
+                    $cards->orderBy('data->surface');
+                    break;
+                case 'rooms':
+                    $cards->orderBy('data->rooms');
+                    break;
+                default:
+        
+                    break;
+            }
+        }
+
+        $cards = $cards->get();
+
         return view('front.buy', compact('cards'));
     }
 
@@ -87,21 +125,5 @@ class FrontController extends Controller
         $content = $content->content;
 
         return view('front.cgv', compact('content'));
-    }
-
-    public function cards() {
-        $cards = Card::all();
-
-        foreach ($cards as $card) {
-
-            $card->slug = str_slug($card->data['title']);
-            $card->img = $card->getFirstImage();
-            $card->type = $card->data['type'];
-            $card->timestamp = $card->created_at->getTimestamp();
-            $card->visible = true;
-            $card->description = Markdown::convertToHtml($card->data['description']);
-        }
-
-        return $cards;
     }
 }

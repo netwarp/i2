@@ -7,14 +7,13 @@
 
 @section('content')
     <div id="background-form">
-       <form method="GET" action="/acheter">
-            
+       <form method="GET" action="/acheter">     
             <div class="field is-horizontal">
                 <div class="field-body">
                     <div class="field">
                         <div class="control is-expanded">
                             <div class="select is-medium">
-                                <select name="vendre-louer">
+                                <select name="vendre_louer">
                                     <option value="vendre">A vendre</option>
                                     <option value="louer">A louer</option>
                                 </select>

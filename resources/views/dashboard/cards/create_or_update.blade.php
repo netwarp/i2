@@ -71,6 +71,15 @@
 										<option value="1" {{ isset($card->data['sold']) && $card->data['sold'] == '1' ? 'selected' : '' }}>Oui</option>
 									</select>
 								</div>
+
+								<div class="form-group">
+									<label for="#">A vendre ou à louer</label>
+									<select class="form-control" name="vendre_louer">
+										<option value="vendre">A vendre</option>
+										<option value="louer" {{ isset($card->data['vendre_louer']) && $card->data['vendre_louer'] == 'louer' ? 'selected' : '' }}>A louer</option>
+									</select>
+								</div>	
+								
 							</fieldset>
 
 							<fieldset>
