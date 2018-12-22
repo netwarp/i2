@@ -36,7 +36,11 @@ class FrontController extends Controller
 
         if ($request->filled('ville')) {
             $ville = $request->get('ville');
-            $cards = $cards->where('data->localisation', 'LIKE', '%'.$ville.'%');
+            $cards = $cards
+                        ->where('data->localisation', 'LIKE', '%'.$ville.'%')
+                        ->orWhere('data->localisation', 'LIKE', '%'.strtoupper($ville).'%')
+                        ->orWhere('data->localisation', 'LIKE', '%'.strtolower($ville).'%')
+                        ->orWhere('data->localisation', 'LIKE', '%'.ucfirst($ville).'%');
         }
 
         if ($request->filled('tri')) {
