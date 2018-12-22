@@ -39,14 +39,14 @@
                 </div>
                 <div class="select">
                     <select name="vendre_louer">
-                        <option value="" disabled selected>Vendre / louer</option>
+                        <option value="" disabled {{ Request::has('vendre_louer') ? '' : 'selected' }}>Vendre / louer</option>
                         <option value="">Tous</option>
-                        <option value="vendre">Vente</option>
-                        <option value="louer">Location</option>
+                        <option value="vendre" {{ Request::get('vendre_louer') === 'vendre' ? 'selected' : '' }}>Vente</option>
+                        <option value="louer" {{ Request::get('vendre_louer') === 'louer' ? 'selected' : '' }}>Location</option>
                     </select>
                 </div>
                 <span>
-                    <input name="ville" class="input" type="text" placeholder="Localisation" style="width: inherit;">
+                    <input name="ville" class="input" type="text" placeholder="Localisation" style="width: inherit;" value="{{ Request::get('ville') ?? '' }}">
                 </span>
                 <button type="submit" class="button is-info">Rechercher</button>
             </form>
