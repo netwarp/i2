@@ -45,9 +45,26 @@
                 </div>
                 <div class="column">
                     <div class="is-size-4">L'agence</div>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis enim reprehenderit facilis, modi consequuntur labore provident odio, eaque! Dignissimos nisi consequatur sint, pariatur et possimus! Delectus repellendus aut quisquam atque.
-                    </p>
+                    <div>
+                        <p>
+                            Vendome Real Estate est une agence immobilière basée Place Vendôme spécialisée dans les biens d’exceptions.
+                        </p>
+                        <p>
+                            Depuis 10 ans déjà sa situation géographique en fait l’agence de référence du quartier Vendome / Opéra / Tuileries/ Saint Honoré.
+                        </p>
+                        <p>
+                            Nous avons également des antennes 25 rue du Chéroy dans le 17ème arrondissement ainsi que dans les Yvelines.
+                        </p>
+                        <p>
+                            Notre réactivité et notre professionnalisme feront toute la différence lorsque vous déciderez de nous confier votre projet d’achat ou de vente d’un bien immobilier.
+                        </p>
+                        <p>
+                            Nous sommes également spécialisés dans les transactions de parkings à Paris et en région parisienne. Nous avons des biens à la vente en lot pour investisseurs ou à l’unité.
+                        </p>
+                        <p>
+                            N’hésitez pas à nous contacter pour nous faire part de votre projet.
+                        </p>
+                    </div>
                     <div class="date">
                         {{ date('Y') }} Tous droits réservés.
                     </div>
